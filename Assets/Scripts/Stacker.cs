@@ -15,28 +15,23 @@ public class Stacker : MonoBehaviour
         stack = new Stack();
     }
     // Use this for initialization
-    void Start ()
-	{
+    void Start()
+    {
         stack.Push(gameObject);
-	    topShape = gameObject.tag;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	    if (Input.GetKeyDown("o"))
-	    {
-            StackShape("Triangle");
-	    }
-	    if (Input.GetKeyDown("p"))
-	    {
-	        PopShape();
-	    }
+        topShape = gameObject.tag;
+    }
 
-	    if (stack.Count >= 8)
-	    {
-	        PlayerController player = GetComponentInParent<PlayerController>();
-            player.GameOver();
-	    }
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown("o"))
+        {
+            StackShape("Triangle");
+        }
+        if (Input.GetKeyDown("p"))
+        {
+            PopShape();
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
