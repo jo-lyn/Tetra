@@ -26,7 +26,6 @@ public class GameController : MonoBehaviour
                 GameOver();
             }
         }
-        //spawners.GetComponent<SpawnController>().spawnTime -= 0.0001f * Time.time;
     }
 
     void GameOver()

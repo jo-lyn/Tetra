@@ -11,7 +11,6 @@ public class SpawnController : MonoBehaviour
     void Start()
     {
         StartCoroutine("SpawnCoroutine");
-        //InvokeRepeating("CallSpawn", spawnTime, spawnTime);
     }
 
     // Update is called once per frame

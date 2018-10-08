@@ -7,12 +7,10 @@ public class PlayerController : MonoBehaviour {
     public float snapDuration = 0.08f;
     public float rotationSpeed = 600f;
     public bool smoothRotation = false;
-   // public Text gameOverText;
 
     // Use this for initialization
     void Start ()
     {
-        //gameOverText.text = "";
     }
 	
 	// Update is called once per frame
@@ -37,12 +35,6 @@ public class PlayerController : MonoBehaviour {
 	        }
         }
 
-    }
-
-    public void GameOver()
-    {
-        //Debug.Log("GAMEO VER");
-        //gameOverText.text = "GAME OVER";
     }
 
     IEnumerator Rotate(Vector3 axis, float angle)
