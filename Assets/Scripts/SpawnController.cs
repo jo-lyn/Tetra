@@ -17,7 +17,7 @@ public class SpawnController : MonoBehaviour
     void Update()
     {
         spawnTime = 1.0f / (0.01f * Time.timeSinceLevelLoad + 0.3f) + 0.5f;
-        
+
         if (spawnTime < 0.5f)
         {
             spawnTime = 0.05f;
@@ -32,6 +32,7 @@ public class SpawnController : MonoBehaviour
 
     IEnumerator SpawnCoroutine()
     {
+        yield return new WaitForSeconds(3.0f);
         while (true)
         {
             Spawn();
