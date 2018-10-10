@@ -9,11 +9,13 @@ public class GameController : MonoBehaviour
     public CanvasGroup gameOver;
     public Stacker[] stacks;
     public GameObject spawners;
+    private int numCleared;
 
     // Use this for initialization
     void Start()
     {
         gameOver.alpha = 0;
+        numCleared = 0;
     }
 
     // Update is called once per frame
@@ -37,5 +39,10 @@ public class GameController : MonoBehaviour
     public void Replay()
     {
         SceneManager.LoadScene("main");
+    }
+
+    public void addClearedCount()
+    {
+
     }
 }

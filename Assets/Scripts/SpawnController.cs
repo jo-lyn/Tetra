@@ -24,10 +24,9 @@ public class SpawnController : MonoBehaviour
         }
     }
 
-    void Spawn()
+    void Spawn(int i)
     {
-        int randNum = Random.Range(0, 4);
-        spawns[randNum].SpawnShape();
+        spawns[i].SpawnShape();
     }
 
     IEnumerator SpawnCoroutine()
@@ -35,7 +34,14 @@ public class SpawnController : MonoBehaviour
         yield return new WaitForSeconds(3.0f);
         while (true)
         {
-            Spawn();
+            int randNum = Random.Range(0, 4);
+            Color temp = spawns[randNum].getAlert().color;
+            temp.a = 1f;
+            spawns[randNum].getAlert().color = temp;
+            yield return new WaitForSeconds(1f);
+            temp.a = 0f;
+            spawns[randNum].getAlert().color = temp;
+            Spawn(randNum);
             yield return new WaitForSeconds(spawnTime);
         }
     }
