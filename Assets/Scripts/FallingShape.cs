@@ -15,7 +15,7 @@ public class FallingShape : MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
-        fallSpeed = 10.0f;
+        //fallSpeed = 10.0f;
     }
 
     // Update is called once per frame
@@ -30,6 +30,7 @@ public class FallingShape : MonoBehaviour
 
     void Update()
     {
+        /**
         fallSpeed = 10.0f * Mathf.Exp(0.01f * Time.timeSinceLevelLoad);
 
         // Cap maximum speed at 40
@@ -38,11 +39,17 @@ public class FallingShape : MonoBehaviour
             fallSpeed = 40.0f;
 
         }
+        */
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         fallSpeed = 0;
         Destroy(gameObject);
+    }
+
+    public void SetFallSpeed(float newSpeed)
+    {
+        fallSpeed = newSpeed;
     }
 }

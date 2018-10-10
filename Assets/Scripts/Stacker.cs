@@ -9,6 +9,7 @@ public class Stacker : MonoBehaviour
     public GameObject[] shapes;
     private Stack stack;
     private string topShape;
+    private int numShapesCleared;
 
     private void Awake()
     {
@@ -19,6 +20,7 @@ public class Stacker : MonoBehaviour
     {
         stack.Push(gameObject);
         topShape = gameObject.tag;
+        numShapesCleared = 0;
     }
 
     // Update is called once per frame
@@ -54,6 +56,11 @@ public class Stacker : MonoBehaviour
         return stack.Count;
     }
 
+    public int GetNumShapesCleared()
+    {
+        return numShapesCleared;
+    }
+
     public void StackShape(string tag)
     {
         GameObject newShape;
@@ -69,6 +76,7 @@ public class Stacker : MonoBehaviour
                 stack.Push(newShape);
 
                 topShape = tag;
+                numShapesCleared++;
                 UpdateCollider();
             }
         }

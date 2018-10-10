@@ -9,18 +9,21 @@ public class GameController : MonoBehaviour
     public CanvasGroup gameOver;
     public Stacker[] stacks;
     public GameObject spawners;
-    private int numCleared;
+    private int numShapesCleared;
+    private float fallSpeed;
 
     // Use this for initialization
     void Start()
     {
         gameOver.alpha = 0;
-        numCleared = 0;
+        numShapesCleared = 0;
+        fallSpeed = 10f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        spawners.GetComponent<SpawnController>().SetFallSpeed(fallSpeed);
         foreach (Stacker stack in stacks)
         {
             if (stack.GetStackCount() >= 8)
@@ -39,10 +42,5 @@ public class GameController : MonoBehaviour
     public void Replay()
     {
         SceneManager.LoadScene("main");
-    }
-
-    public void addClearedCount()
-    {
-
     }
 }
