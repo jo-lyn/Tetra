@@ -23,10 +23,18 @@ public class SpawnController : MonoBehaviour
             spawnTime = 0.05f;
         }
     }
-
-    void Spawn(int i)
+    void ShowAlert(int spawnNum)
     {
-        spawns[i].SpawnShape();
+        Color color = spawns[spawnNum].getAlert().color;
+        color.a = 1f;
+        spawns[spawnNum].getAlert().color = color;
+    }
+
+    void HideAlert(int spawnNum)
+    {
+        Color color = spawns[spawnNum].getAlert().color;
+        color.a = 0f;
+        spawns[spawnNum].getAlert().color = color;
     }
 
     IEnumerator SpawnCoroutine()
@@ -34,14 +42,11 @@ public class SpawnController : MonoBehaviour
         yield return new WaitForSeconds(3.0f);
         while (true)
         {
-            int randNum = Random.Range(0, 4);
-            Color temp = spawns[randNum].getAlert().color;
-            temp.a = 1f;
-            spawns[randNum].getAlert().color = temp;
+            int spawnNum = Random.Range(0, 4);
+            ShowAlert(spawnNum);
             yield return new WaitForSeconds(1f);
-            temp.a = 0f;
-            spawns[randNum].getAlert().color = temp;
-            Spawn(randNum);
+            HideAlert(spawnNum);
+            spawns[spawnNum].SpawnShape();
             yield return new WaitForSeconds(spawnTime);
         }
     }
