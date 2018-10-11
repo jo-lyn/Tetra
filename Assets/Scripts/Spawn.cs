@@ -28,10 +28,9 @@ public class Spawn : MonoBehaviour
         return alertSprite;
     }
 
-    public void SpawnShape(float fallSpeed)
+    public void SpawnShape()
     {
         int randNum = Random.Range(0, 4);
         GameObject shape = Instantiate(shapes[randNum], transform.position, gameObject.transform.rotation);
-        shape.GetComponent<FallingShape>().SetFallSpeed(fallSpeed);
     }
 }

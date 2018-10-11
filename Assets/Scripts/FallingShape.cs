@@ -20,7 +20,7 @@ public class FallingShape : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
+        fallSpeed = GameController.instance.GetFallSpeed();
         Vector2 direction = transform.rotation * new Vector2(0, -1 * fallSpeed);
         rb2d.MovePosition(rb2d.position + direction * Time.fixedDeltaTime);
 
@@ -44,10 +44,5 @@ public class FallingShape : MonoBehaviour
     {
         fallSpeed = 0;
         Destroy(gameObject);
-    }
-
-    public void SetFallSpeed(float newSpeed)
-    {
-        fallSpeed = newSpeed;
     }
 }

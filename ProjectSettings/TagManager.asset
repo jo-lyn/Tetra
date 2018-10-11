@@ -12,6 +12,7 @@ TagManager:
   - Stack2
   - Stack3
   - Stack4
+  - Root
   layers:
   - Default
   - TransparentFX
@@ -54,4 +55,7 @@ TagManager:
     locked: 0
   - name: Shape
     uniqueID: 2586517965
+    locked: 0
+  - name: Icon
+    uniqueID: 2492338495
     locked: 0

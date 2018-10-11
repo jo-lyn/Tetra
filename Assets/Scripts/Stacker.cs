@@ -78,7 +78,7 @@ public class Stacker : MonoBehaviour
 
     public void PopShape()
     {
-        gameController.AddNumShapesCleared();
+        GameController.instance.AddNumShapesCleared();
 
         // do not pop if only root is left
         if (stack.Count > 1)

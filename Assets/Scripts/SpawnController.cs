@@ -6,7 +6,6 @@ public class SpawnController : MonoBehaviour
 {
     public Spawn[] spawns;
     public float spawnTime = 3.0f;
-    private float fallSpeed;
 
     // Use this for initialization
     void Start()
@@ -23,11 +22,6 @@ public class SpawnController : MonoBehaviour
         {
             spawnTime = 0.05f;
         }
-    }
-
-    public void SetFallSpeed(float speed)
-    {
-        fallSpeed = speed;
     }
 
     void ShowAlert(int spawnNum)
@@ -53,8 +47,8 @@ public class SpawnController : MonoBehaviour
             ShowAlert(spawnNum);
             yield return new WaitForSeconds(1f);
             HideAlert(spawnNum);
-            spawns[spawnNum].SpawnShape(fallSpeed);
-            yield return new WaitForSeconds(spawnTime);
+            spawns[spawnNum].SpawnShape();
+            yield return new WaitForSeconds(1f / GameController.instance.GetSpawnRate());
         }
     }
 }

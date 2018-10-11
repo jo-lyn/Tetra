@@ -6,21 +6,34 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
+    public static GameController instance = null;
     public CanvasGroup gameOver;
     public Stacker[] stacks;
-    public GameObject spawners;
+    public GameObject spawnControllerObj;
     private SpawnController spawnController;
     private int numShapesCleared;
-    private float baseFallSpeed, speedMultiplier, fallSpeed;
+    private float baseFallSpeed, fallSpeed;
+    private float baseSpawnRate, spawnRate;
 
-    // Use this for initialization
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     void Start()
     {
         gameOver.alpha = 0;
         numShapesCleared = 0;
         baseFallSpeed = 10f;
-        speedMultiplier = 1f;
-        spawnController = spawners.GetComponent<SpawnController>();
+        baseSpawnRate = 0.3f;
+        spawnController = spawnControllerObj.GetComponent<SpawnController>();
     }
 
     // Update is called once per frame
@@ -33,17 +46,27 @@ public class GameController : MonoBehaviour
                 GameOver();
             }
         }
-
-        speedMultiplier = 1 + numShapesCleared / 10f;
-        fallSpeed = numShapesCleared == 0 ? baseFallSpeed : baseFallSpeed * speedMultiplier;
-
-        spawnController.SetFallSpeed(fallSpeed);
     }
 
     void GameOver()
     {
         gameOver.alpha = 1;
-        Destroy(spawners);
+        Destroy(spawnControllerObj);
+    }
+
+    public float GetFallSpeed()
+    {
+        float multiplier = 1 + numShapesCleared / 13f;
+        fallSpeed = numShapesCleared == 0 ? baseFallSpeed : baseFallSpeed * multiplier;
+        return fallSpeed;
+    }
+
+    public float GetSpawnRate()
+    {
+        float speedBoost = numShapesCleared / 13f;
+        spawnRate = numShapesCleared == 0 ? baseSpawnRate : baseSpawnRate + speedBoost;
+        Debug.Log(spawnRate);
+        return spawnRate;
     }
 
     public void Replay()
@@ -54,6 +77,5 @@ public class GameController : MonoBehaviour
     public void AddNumShapesCleared()
     {
         numShapesCleared++;
-        //Debug.Log(numShapesCleared);
     }
 }
