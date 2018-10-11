@@ -10,19 +10,23 @@ public class GameController : MonoBehaviour
     public Stacker[] stacks;
     public GameObject spawners;
     private int numShapesCleared;
-    private float fallSpeed;
+    private float baseFallSpeed, speedMultiplier, fallSpeed;
 
     // Use this for initialization
     void Start()
     {
         gameOver.alpha = 0;
         numShapesCleared = 0;
-        fallSpeed = 10f;
+        baseFallSpeed = 10f;
+        speedMultiplier = 1f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        speedMultiplier = 1 + numShapesCleared / 10f;
+        Debug.Log(speedMultiplier);
+        fallSpeed = numShapesCleared == 0 ? baseFallSpeed : baseFallSpeed * speedMultiplier;
         spawners.GetComponent<SpawnController>().SetFallSpeed(fallSpeed);
         foreach (Stacker stack in stacks)
         {
@@ -42,5 +46,11 @@ public class GameController : MonoBehaviour
     public void Replay()
     {
         SceneManager.LoadScene("main");
+    }
+
+    public void AddNumShapesCleared()
+    {
+        numShapesCleared++;
+        //Debug.Log(numShapesCleared);
     }
 }
