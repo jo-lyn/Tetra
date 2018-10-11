@@ -14,7 +14,6 @@ public class FallingShape : MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
-        //fallSpeed = 10.0f;
     }
 
     // Update is called once per frame

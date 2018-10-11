@@ -38,15 +38,12 @@ public class Stacker : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        //Debug.Log("incoming: " + other.tag);
-        //Debug.Log("top: " + topShape);
         if (other.CompareTag(topShape))
         {
             PopShape();
         }
         else
         {
-            //Debug.Log("STACKING");
             StackShape(other.tag);
         }
     }
@@ -59,7 +56,6 @@ public class Stacker : MonoBehaviour
     public void StackShape(string tag)
     {
         GameObject newShape;
-        //Debug.Log("SEARCHING FOR: " + tag);
 
         foreach (GameObject shape in shapes)
         {
