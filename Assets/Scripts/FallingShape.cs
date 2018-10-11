@@ -5,7 +5,6 @@ using UnityEngine.Networking;
 
 public class FallingShape : MonoBehaviour
 {
-    public bool isRoot = false;
     public Stacker stacker;
     public float fallSpeed;
 
@@ -21,11 +20,10 @@ public class FallingShape : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!isRoot)
-        {
-            Vector2 direction = transform.rotation * new Vector2(0, -1 * fallSpeed);
-            rb2d.MovePosition(rb2d.position + direction * Time.fixedDeltaTime);
-        }
+
+        Vector2 direction = transform.rotation * new Vector2(0, -1 * fallSpeed);
+        rb2d.MovePosition(rb2d.position + direction * Time.fixedDeltaTime);
+
     }
 
     void Update()
