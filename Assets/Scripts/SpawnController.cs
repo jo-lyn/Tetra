@@ -16,12 +16,13 @@ public class SpawnController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /**
         spawnTime = 1.0f / (0.01f * Time.timeSinceLevelLoad + 0.3f) + 0.5f;
 
         if (spawnTime < 0.5f)
         {
             spawnTime = 0.05f;
-        }
+        }*/
     }
 
     void ShowAlert(int spawnNum)
