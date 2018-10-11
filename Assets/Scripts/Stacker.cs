@@ -7,7 +7,6 @@ using UnityEngine;
 public class Stacker : MonoBehaviour
 {
     public GameObject[] shapes;
-    public GameController gameController;
     private Stack stack;
     private string topShape;
 
