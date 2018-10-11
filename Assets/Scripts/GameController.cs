@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
     public CanvasGroup gameOver;
     public Stacker[] stacks;
     public GameObject spawners;
+    private SpawnController spawnController;
     private int numShapesCleared;
     private float baseFallSpeed, speedMultiplier, fallSpeed;
 
@@ -19,15 +20,12 @@ public class GameController : MonoBehaviour
         numShapesCleared = 0;
         baseFallSpeed = 10f;
         speedMultiplier = 1f;
+        spawnController = spawners.GetComponent<SpawnController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        speedMultiplier = 1 + numShapesCleared / 10f;
-        Debug.Log(speedMultiplier);
-        fallSpeed = numShapesCleared == 0 ? baseFallSpeed : baseFallSpeed * speedMultiplier;
-        spawners.GetComponent<SpawnController>().SetFallSpeed(fallSpeed);
         foreach (Stacker stack in stacks)
         {
             if (stack.GetStackCount() >= 8)
@@ -35,6 +33,11 @@ public class GameController : MonoBehaviour
                 GameOver();
             }
         }
+
+        speedMultiplier = 1 + numShapesCleared / 10f;
+        fallSpeed = numShapesCleared == 0 ? baseFallSpeed : baseFallSpeed * speedMultiplier;
+
+        spawnController.SetFallSpeed(fallSpeed);
     }
 
     void GameOver()
