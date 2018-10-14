@@ -41,7 +41,7 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(GetTotalStackCount());
+        //Debug.Log(GetTotalStackCount());
         foreach (Stacker stack in stacks)
         {
             if (stack.GetStackCount() >= 8)
@@ -70,20 +70,23 @@ public class GameController : MonoBehaviour
 
     public float GetFallSpeed()
     {
-        float multiplier = 1 + numShapesCleared / 13f;
-        // float negativeMultipler = GetTotalStackCount()...;
+        float positiveMultiplier = 1 + numShapesCleared * 0.0125f;
+        float negativeMultipler = 1 - GetTotalStackCount() * 0.002f;
         fallSpeed = numShapesCleared == 0
                     ? baseFallSpeed
-                    : baseFallSpeed * multiplier * negativeMultipler;
+                    : baseFallSpeed * positiveMultiplier * negativeMultipler;
+        Debug.Log("shapes cleared: " + numShapesCleared + " stack count: " + GetTotalStackCount() + ", speed: " + fallSpeed);
         return fallSpeed;
     }
 
     public float GetSpawnRate()
     {
-        float speedBoost = numShapesCleared / 13f;
+        float speedBoost = 1 + numShapesCleared * 0.0125f;
+        float negativeMultipler = 1 - GetTotalStackCount() * 0.002f;
         spawnRate = numShapesCleared == 0
                     ? baseSpawnRate
-                    : baseSpawnRate + speedBoost;
+                    : baseSpawnRate * speedBoost * negativeMultipler;
+        Debug.Log("SPWAN RATE: " + spawnRate);
         return spawnRate;
     }
 
