@@ -3,36 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour {
-    public float snapDuration = 0.08f;
+public class PlayerController : MonoBehaviour
+{
+    public float snapDuration = 0.06f;
     public float rotationSpeed = 600f;
     public bool smoothRotation = false;
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
     }
-	
-	// Update is called once per frame
-	void Update () {
 
-	    if (smoothRotation)
-	    {
-	        float rotation = Input.GetAxis("Horizontal") * rotationSpeed;
-	        Debug.Log(Input.GetAxis("Horizontal"));
-	        rotation *= Time.deltaTime;
-	        transform.Rotate(0, 0, -1 * rotation);
+    // Update is called once per frame
+    void Update()
+    {
+
+        if (smoothRotation)
+        {
+            float rotation = Input.GetAxis("Horizontal") * rotationSpeed;
+            Debug.Log(Input.GetAxis("Horizontal"));
+            rotation *= Time.deltaTime;
+            transform.Rotate(0, 0, -1 * rotation);
         }
-	    else
-	    {
-	        if (Input.GetKeyDown("left") || Input.GetKeyDown("a"))
-	        {
-	            StartCoroutine(Rotate(Vector3.forward, 90));
-	        }
-	        if (Input.GetKeyDown("right") || Input.GetKeyDown("d"))
-	        {
-	            StartCoroutine(Rotate(Vector3.back, 90));
-	        }
+        else
+        {
+            if (Input.GetKeyDown("left") || Input.GetKeyDown("a"))
+            {
+                StartCoroutine(Rotate(Vector3.forward, 90));
+            }
+            if (Input.GetKeyDown("right") || Input.GetKeyDown("d"))
+            {
+                StartCoroutine(Rotate(Vector3.back, 90));
+            }
         }
 
     }
