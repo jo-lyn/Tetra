@@ -80,7 +80,7 @@ public class GameController : MonoBehaviour
         fallSpeed = numShapesCleared == 0
                     ? baseFallSpeed
                     : baseFallSpeed * positiveMultiplier * negativeMultipler;
-        Debug.Log("shapes cleared: " + numShapesCleared + " stack count: " + GetTotalStackCount() + ", speed: " + fallSpeed);
+        //Debug.Log("shapes cleared: " + numShapesCleared + " stack count: " + GetTotalStackCount() + ", speed: " + fallSpeed);
         return fallSpeed;
     }
 
