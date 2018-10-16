@@ -7,7 +7,6 @@ public class Bar : MonoBehaviour
 {
     public Image bar;
     private float incrementAmount = 0.2f;
-    private int fill = 0;
 
     // Use this for initialization
     void Start()

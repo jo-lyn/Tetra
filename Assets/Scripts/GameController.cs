@@ -11,7 +11,6 @@ public class GameController : MonoBehaviour
     public Bar bar;
     public Stacker[] stacks;
     public GameObject spawnControllerObj;
-    private SpawnController spawnController;
     private int numShapesCleared, numShapesStacked;
     private float baseFallSpeed, fallSpeed;
     private float baseSpawnRate, spawnRate;
@@ -34,7 +33,6 @@ public class GameController : MonoBehaviour
         numShapesCleared = 0;
         baseFallSpeed = 10f;
         baseSpawnRate = 0.3f;
-        spawnController = spawnControllerObj.GetComponent<SpawnController>();
     }
 
     // Update is called once per frame
