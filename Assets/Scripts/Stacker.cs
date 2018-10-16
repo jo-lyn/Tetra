@@ -32,6 +32,7 @@ public class Stacker : MonoBehaviour
         if (Input.GetKeyDown("p"))
         {
             PopShape();
+            GameController.instance.AddNumShapesCleared();
         }
     }
 
@@ -40,6 +41,7 @@ public class Stacker : MonoBehaviour
         if (other.CompareTag(topShape))
         {
             PopShape();
+            GameController.instance.AddNumShapesCleared();
         }
         else
         {
@@ -73,7 +75,7 @@ public class Stacker : MonoBehaviour
 
     public void PopShape()
     {
-        GameController.instance.AddNumShapesCleared();
+        //GameController.instance.AddNumShapesCleared();
 
         // do not pop if only root is left
         if (stack.Count > 1)

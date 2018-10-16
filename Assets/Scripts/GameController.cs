@@ -70,13 +70,12 @@ public class GameController : MonoBehaviour
         foreach (Stacker stack in stacks)
         {
             stack.PopShape();
-            numShapesCleared--;
         }
     }
 
     public float GetFallSpeed()
     {
-        float positiveMultiplier = 1 + numShapesCleared * 0.08f;
+        float positiveMultiplier = 1 + numShapesCleared * 0.05f;
         float negativeMultipler = 1 - GetTotalStackCount() * 0.02f;
         fallSpeed = numShapesCleared == 0
                     ? baseFallSpeed

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Bar : MonoBehaviour
 {
     public Image bar;
-    private float incrementAmount = 0.2f;
+    private float incrementAmount = 0.1f;
 
     // Use this for initialization
     void Start()
@@ -25,7 +25,7 @@ public class Bar : MonoBehaviour
 
     public void UpdateFill(int numShapesCleared)
     {
-        if (numShapesCleared != 0 && (numShapesCleared % 4) == 0)
+        if (numShapesCleared != 0)
         {
             Debug.Log(numShapesCleared);
             bar.fillAmount += incrementAmount;
