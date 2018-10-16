@@ -6,7 +6,7 @@ public class SpawnController : MonoBehaviour
 {
     public Spawn[] spawns;
     public float spawnTime = 3.0f;
-    private string[] shapeTags = {"Circle", "Cross", "Triangle", "Square"};
+    private string[] shapeTags = { "Circle", "Cross", "Triangle", "Square" };
 
     // Use this for initialization
     void Start()
