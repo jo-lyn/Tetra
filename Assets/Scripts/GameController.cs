@@ -8,13 +8,13 @@ public class GameController : MonoBehaviour
 {
     public static GameController instance = null;
     public CanvasGroup gameOver;
+    public Bar bar;
     public Stacker[] stacks;
     public GameObject spawnControllerObj;
     private SpawnController spawnController;
     private int numShapesCleared, numShapesStacked;
     private float baseFallSpeed, fallSpeed;
     private float baseSpawnRate, spawnRate;
-    private float negativeMultipler;
 
     void Awake()
     {
@@ -34,7 +34,6 @@ public class GameController : MonoBehaviour
         numShapesCleared = 0;
         baseFallSpeed = 10f;
         baseSpawnRate = 0.3f;
-        negativeMultipler = 1f;
         spawnController = spawnControllerObj.GetComponent<SpawnController>();
     }
 
@@ -68,10 +67,19 @@ public class GameController : MonoBehaviour
         return count - NUM_ROOT_SHAPES;
     }
 
+    public void ClearTopLayer()
+    {
+        foreach (Stacker stack in stacks)
+        {
+            stack.PopShape();
+            numShapesCleared--;
+        }
+    }
+
     public float GetFallSpeed()
     {
-        float positiveMultiplier = 1 + numShapesCleared * 0.0125f;
-        float negativeMultipler = 1 - GetTotalStackCount() * 0.002f;
+        float positiveMultiplier = 1 + numShapesCleared * 0.08f;
+        float negativeMultipler = 1 - GetTotalStackCount() * 0.02f;
         fallSpeed = numShapesCleared == 0
                     ? baseFallSpeed
                     : baseFallSpeed * positiveMultiplier * negativeMultipler;
@@ -81,12 +89,12 @@ public class GameController : MonoBehaviour
 
     public float GetSpawnRate()
     {
-        float speedBoost = 1 + numShapesCleared * 0.0125f;
-        float negativeMultipler = 1 - GetTotalStackCount() * 0.002f;
+        float speedBoost = 1 + numShapesCleared * 0.08f;
+        float negativeMultiplier = 1 - GetTotalStackCount() * 0.02f;
         spawnRate = numShapesCleared == 0
                     ? baseSpawnRate
-                    : baseSpawnRate * speedBoost * negativeMultipler;
-        Debug.Log("SPWAN RATE: " + spawnRate);
+                    : baseSpawnRate * speedBoost * negativeMultiplier;
+        //Debug.Log("SPWAN RATE: " + spawnRate);
         return spawnRate;
     }
 
@@ -98,5 +106,6 @@ public class GameController : MonoBehaviour
     public void AddNumShapesCleared()
     {
         numShapesCleared++;
+        bar.UpdateFill(numShapesCleared);
     }
 }
