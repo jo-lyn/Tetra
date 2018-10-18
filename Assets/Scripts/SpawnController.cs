@@ -6,7 +6,6 @@ public class SpawnController : MonoBehaviour
 {
     public Spawn[] spawns;
     public float spawnTime = 3.0f;
-    private string[] shapeTags = { "Circle", "Cross", "Triangle", "Square" };
 
     // Use this for initialization
     void Start()
@@ -26,18 +25,18 @@ public class SpawnController : MonoBehaviour
         }*/
     }
 
-    void ShowAlert(int spawnNum, string shapeTag)
+    void ShowAlert(int spawnNum)
     {
-        Color color = spawns[spawnNum].getAlert(shapeTag).color;
+        Color color = spawns[spawnNum].getAlert().color;
         color.a = 1f;
-        spawns[spawnNum].getAlert(shapeTag).color = color;
+        spawns[spawnNum].getAlert().color = color;
     }
 
-    void HideAlert(int spawnNum, string shapeTag)
+    void HideAlert(int spawnNum)
     {
-        Color color = spawns[spawnNum].getAlert(shapeTag).color;
+        Color color = spawns[spawnNum].getAlert().color;
         color.a = 0f;
-        spawns[spawnNum].getAlert(shapeTag).color = color;
+        spawns[spawnNum].getAlert().color = color;
     }
 
     IEnumerator SpawnCoroutine()
@@ -46,12 +45,10 @@ public class SpawnController : MonoBehaviour
         while (true)
         {
             int spawnNum = Random.Range(0, 4);
-            int shapeNum = Random.Range(0, 4);
-            string shapeTag = shapeTags[shapeNum];
-            ShowAlert(spawnNum, shapeTag);
+            ShowAlert(spawnNum);
             yield return new WaitForSeconds(1f);
-            HideAlert(spawnNum, shapeTag);
-            spawns[spawnNum].SpawnShape(shapeNum);
+            HideAlert(spawnNum);
+            spawns[spawnNum].SpawnShape();
             yield return new WaitForSeconds(1f / GameController.instance.GetSpawnRate());
         }
     }

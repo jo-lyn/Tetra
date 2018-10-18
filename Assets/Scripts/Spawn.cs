@@ -6,20 +6,16 @@ using UnityEngine;
 public class Spawn : MonoBehaviour
 {
     public GameObject[] shapes;
-    public GameObject[] alerts;
-    private SpriteRenderer[] alertSprites;
+    public GameObject alert;
+    private SpriteRenderer alertSprite;
 
     // Use this for initialization
     void Start()
     {
-        alertSprites = new SpriteRenderer[alerts.Length];
-        for (int i = 0; i < alerts.Length; i++)
-        {
-            alertSprites[i] = alerts[i].GetComponent<SpriteRenderer>();
-            Color color = alertSprites[i].color;
-            color.a = 0f;
-            alertSprites[i].color = color;
-        }
+        alertSprite = alert.GetComponent<SpriteRenderer>();
+        Color color = alertSprite.color;
+        color.a = 0f;
+        alertSprite.color = color;
     }
 
     // Update is called once per frame
@@ -27,21 +23,14 @@ public class Spawn : MonoBehaviour
     {
     }
 
-    public SpriteRenderer getAlert(string shapeTag)
+    public SpriteRenderer getAlert()
     {
-        foreach (SpriteRenderer alertSprite in alertSprites)
-        {
-            if (alertSprite.CompareTag(shapeTag))
-            {
-                return alertSprite;
-            }
-        }
-        return alertSprites[0];
+        return alertSprite;
     }
 
-    public void SpawnShape(int shapeNum)
+    public void SpawnShape()
     {
-        GameObject shape = Instantiate(shapes[shapeNum], transform.position, gameObject.transform.rotation);
-        Debug.Log(shape.tag);
+        int randNum = Random.Range(0, 4);
+        Instantiate(shapes[randNum], transform.position, gameObject.transform.rotation);
     }
 }
