@@ -37,7 +37,7 @@ public class GameController : MonoBehaviour
         baseSpawnRate = 0.3f;
         isSurging = false;
         surgeDuration = 6f;
-        surgeInterval = 20f;
+        surgeInterval = 30f;
 
         InvokeRepeating("ActivateSurge", surgeInterval, surgeInterval);
         InvokeRepeating("DeactivateSurge", surgeInterval + surgeDuration, surgeInterval);
