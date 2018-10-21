@@ -341,7 +341,7 @@ Prefab:
         type: 2}
       propertyPath: alert
       value: 
-      objectReference: {fileID: 850097928}
+      objectReference: {fileID: 850097930}
     - target: {fileID: 0}
       propertyPath: m_RootOrder
       value: 2
@@ -400,6 +400,11 @@ Prefab:
       propertyPath: alerts.Array.data[3]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 114088786426758798, guid: 5d161e47d91bce94b9846665890ac17e,
+        type: 2}
+      propertyPath: alertSprite
+      value: 
+      objectReference: {fileID: 850097930}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d161e47d91bce94b9846665890ac17e, type: 2}
   m_IsPrefabAsset: 0
@@ -738,6 +743,11 @@ Prefab:
       propertyPath: bar
       value: 
       objectReference: {fileID: 2027804908}
+    - target: {fileID: 114685543098911746, guid: 864950c9812b6fc4780a23498493c962,
+        type: 2}
+      propertyPath: background
+      value: 
+      objectReference: {fileID: 38295494}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 864950c9812b6fc4780a23498493c962, type: 2}
   m_IsPrefabAsset: 0
@@ -1178,7 +1188,7 @@ Prefab:
         type: 2}
       propertyPath: alert
       value: 
-      objectReference: {fileID: 521671894}
+      objectReference: {fileID: 521671896}
     - target: {fileID: 0}
       propertyPath: m_RootOrder
       value: 0
@@ -1225,6 +1235,11 @@ Prefab:
       propertyPath: alerts.Array.data[3]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 114088786426758798, guid: 5d161e47d91bce94b9846665890ac17e,
+        type: 2}
+      propertyPath: alertSprite
+      value: 
+      objectReference: {fileID: 521671896}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d161e47d91bce94b9846665890ac17e, type: 2}
   m_IsPrefabAsset: 0
@@ -1643,7 +1658,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1146511624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2474,7 +2489,7 @@ Prefab:
         type: 2}
       propertyPath: alert
       value: 
-      objectReference: {fileID: 981718621}
+      objectReference: {fileID: 981718623}
     - target: {fileID: 0}
       propertyPath: m_RootOrder
       value: 3
@@ -2533,6 +2548,11 @@ Prefab:
       propertyPath: alerts.Array.data[3]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 114088786426758798, guid: 5d161e47d91bce94b9846665890ac17e,
+        type: 2}
+      propertyPath: alertSprite
+      value: 
+      objectReference: {fileID: 981718623}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d161e47d91bce94b9846665890ac17e, type: 2}
   m_IsPrefabAsset: 0
@@ -2615,7 +2635,7 @@ Prefab:
         type: 2}
       propertyPath: alert
       value: 
-      objectReference: {fileID: 193157349}
+      objectReference: {fileID: 193157351}
     - target: {fileID: 0}
       propertyPath: m_RootOrder
       value: 1
@@ -2674,6 +2694,11 @@ Prefab:
       propertyPath: alerts.Array.data[3]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 114088786426758798, guid: 5d161e47d91bce94b9846665890ac17e,
+        type: 2}
+      propertyPath: alertSprite
+      value: 
+      objectReference: {fileID: 193157351}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d161e47d91bce94b9846665890ac17e, type: 2}
   m_IsPrefabAsset: 0
