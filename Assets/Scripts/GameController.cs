@@ -70,6 +70,7 @@ public class GameController : MonoBehaviour
         foreach (Stacker stack in stacks)
         {
             stack.PopShape();
+            numShapesCleared--; // do not add to cleared count
         }
     }
 
