@@ -6,16 +6,14 @@ using UnityEngine;
 public class Spawn : MonoBehaviour
 {
     public GameObject[] shapes;
-    public GameObject alert;
-    private SpriteRenderer alertSprite;
+    public SpriteRenderer alert;
 
     // Use this for initialization
     void Start()
     {
-        alertSprite = alert.GetComponent<SpriteRenderer>();
-        Color color = alertSprite.color;
+        Color color = alert.color;
         color.a = 0f;
-        alertSprite.color = color;
+        alert.color = color;
     }
 
     // Update is called once per frame
@@ -25,7 +23,7 @@ public class Spawn : MonoBehaviour
 
     public SpriteRenderer getAlert()
     {
-        return alertSprite;
+        return alert;
     }
 
     public void SpawnShape()
