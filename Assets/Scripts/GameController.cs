@@ -14,6 +14,8 @@ public class GameController : MonoBehaviour
     private int numShapesCleared, numShapesStacked;
     private float baseFallSpeed, fallSpeed;
     private float baseSpawnRate, spawnRate;
+    private bool isSurging;
+    private float surgeDuration, surgeInterval;
 
     void Awake()
     {
@@ -33,6 +35,12 @@ public class GameController : MonoBehaviour
         numShapesCleared = 0;
         baseFallSpeed = 10f;
         baseSpawnRate = 0.3f;
+        isSurging = false;
+        surgeDuration = 6f;
+        surgeInterval = 20f;
+
+        InvokeRepeating("ActivateSurge", surgeInterval, surgeInterval);
+        InvokeRepeating("DeactivateSurge", surgeInterval + surgeDuration, surgeInterval);
     }
 
     // Update is called once per frame
@@ -52,6 +60,19 @@ public class GameController : MonoBehaviour
     {
         gameOver.alpha = 1;
         Destroy(spawnControllerObj);
+    }
+
+    void ActivateSurge()
+    {
+        Debug.Log("SURGE START");
+        isSurging = true;
+        // 353535
+    }
+
+    void DeactivateSurge()
+    {
+        Debug.Log("SURGE END");
+        isSurging = false;
     }
 
     int GetTotalStackCount()
@@ -87,12 +108,19 @@ public class GameController : MonoBehaviour
 
     public float GetSpawnRate()
     {
-        float speedBoost = 1 + numShapesCleared * 0.08f;
-        float negativeMultiplier = 1 - GetTotalStackCount() * 0.02f;
-        spawnRate = numShapesCleared == 0
-                    ? baseSpawnRate
-                    : baseSpawnRate * speedBoost * negativeMultiplier;
-        //Debug.Log("SPWAN RATE: " + spawnRate);
+        if (isSurging)
+        {
+            spawnRate = 10f;
+        }
+        else
+        {
+            float speedBoost = 1 + numShapesCleared * 0.08f;
+            float negativeMultiplier = 1 - GetTotalStackCount() * 0.02f;
+            spawnRate = numShapesCleared == 0
+                        ? baseSpawnRate
+                        : baseSpawnRate * speedBoost * negativeMultiplier;
+        }
+
         return spawnRate;
     }
 
