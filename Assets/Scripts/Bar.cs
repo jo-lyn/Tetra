@@ -17,7 +17,7 @@ public class Bar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (bar.fillAmount == 1)
+        if (Input.GetKeyDown("space") && bar.fillAmount == 1)
         {
             ResetFill();
         }
@@ -27,7 +27,6 @@ public class Bar : MonoBehaviour
     {
         if (numShapesCleared != 0)
         {
-            Debug.Log(numShapesCleared);
             bar.fillAmount += incrementAmount;
         }
     }
