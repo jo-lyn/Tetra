@@ -8,15 +8,17 @@ public class MainMenu : MonoBehaviour
 {
     public EventSystem eventSystem;
     public GameObject selectedObject;
-    private bool isSelected;
 
     void Update()
     {
+        /* 
         if (Input.GetAxisRaw("Vertical") != 0 && !isSelected)
         {
             eventSystem.SetSelectedGameObject(selectedObject);
             isSelected = true;
-        }
+            Debug.Log(selectedObject);
+        }*/
+        //Debug.Log(eventSystem.currentSelectedGameObject);
     }
     public void PlayGame()
     {
@@ -28,8 +30,4 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
-    private void onDisable()
-    {
-        isSelected = false;
-    }
 }
