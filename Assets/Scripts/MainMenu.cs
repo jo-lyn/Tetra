@@ -8,26 +8,34 @@ public class MainMenu : MonoBehaviour
 {
     public EventSystem eventSystem;
     public GameObject selectedObject;
+    public Animator animator;
 
     void Update()
     {
-        /* 
-        if (Input.GetAxisRaw("Vertical") != 0 && !isSelected)
+        if (Input.GetAxisRaw("Vertical") != 0)
         {
-            eventSystem.SetSelectedGameObject(selectedObject);
-            isSelected = true;
-            Debug.Log(selectedObject);
-        }*/
+           // eventSystem.SetSelectedGameObject(selectedObject);
+        }
         //Debug.Log(eventSystem.currentSelectedGameObject);
     }
     public void PlayGame()
     {
-        SceneManager.LoadScene("main");
+        Debug.Log("play");
+        StartCoroutine(LoadGame());
     }
 
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    IEnumerator LoadGame()
+    {
+        Debug.Log("setting trig");
+        animator.SetTrigger("menuOut");
+        Debug.Log("anim end");
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("main");
     }
 
 }
