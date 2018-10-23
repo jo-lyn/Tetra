@@ -97,12 +97,12 @@ public class GameController : MonoBehaviour
 
     public float GetFallSpeed()
     {
-        float positiveMultiplier = 1 + numShapesCleared * 0.05f;
-        float negativeMultipler = 1 - GetTotalStackCount() * 0.02f;
+        float positiveMultiplier = 1 + numShapesCleared * (1.45f / (90 + numShapesCleared) + 0.2f / 150);
+        float negativeMultipler = 1 - Mathf.Pow(GetTotalStackCount(), 1.385f) / 100;
         fallSpeed = numShapesCleared == 0
                     ? baseFallSpeed
                     : baseFallSpeed * positiveMultiplier * negativeMultipler;
-        //Debug.Log("shapes cleared: " + numShapesCleared + " stack count: " + GetTotalStackCount() + ", speed: " + fallSpeed);
+        Debug.Log("shapes cleared: " + numShapesCleared + " stack count: " + GetTotalStackCount() + ", speed: " + fallSpeed);
         return fallSpeed;
     }
 
