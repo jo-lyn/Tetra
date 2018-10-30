@@ -16,6 +16,9 @@ public class GameController : MonoBehaviour
     private float baseSpawnRate, spawnRate;
     private bool isSurging;
     private float surgeDuration, surgeInterval;
+    private float startTime, endTime;
+
+    private int i;
 
     void Awake()
     {
@@ -33,11 +36,13 @@ public class GameController : MonoBehaviour
     {
         gameOver.alpha = 0;
         numShapesCleared = 0;
-        baseFallSpeed = 10f;
+        baseFallSpeed = 9.3f;
         baseSpawnRate = 0.3f;
         isSurging = false;
         surgeDuration = 6f;
         surgeInterval = 30f;
+        startTime = Time.time;
+        i = 0;
 
         InvokeRepeating("ActivateSurge", surgeInterval, surgeInterval);
         InvokeRepeating("DeactivateSurge", surgeInterval + surgeDuration, surgeInterval);
@@ -60,18 +65,23 @@ public class GameController : MonoBehaviour
     {
         gameOver.alpha = 1;
         Destroy(spawnControllerObj);
+        if (i == 0)
+        {
+            endTime = Time.time - startTime;
+            Debug.Log("Time taken: " + endTime);
+            Debug.Log("Shapes cleared: " + numShapesCleared);
+            Debug.Log("Fall speed: " + fallSpeed);
+        }
+        i++;
     }
 
     void ActivateSurge()
     {
-        Debug.Log("SURGE START");
-        isSurging = true;
-        // 353535
+         isSurging = true;
     }
 
     void DeactivateSurge()
     {
-        Debug.Log("SURGE END");
         isSurging = false;
     }
 
@@ -97,12 +107,12 @@ public class GameController : MonoBehaviour
 
     public float GetFallSpeed()
     {
-        float positiveMultiplier = 1 + numShapesCleared * (1.45f / (90 + numShapesCleared) + 0.2f / 150);
+        float positiveMultiplier = 1 + numShapesCleared * (1.48f / (80 + numShapesCleared) + 0.2f / 150);
         float negativeMultipler = 1 - Mathf.Pow(GetTotalStackCount(), 1.385f) / 100;
         fallSpeed = numShapesCleared == 0
                     ? baseFallSpeed
                     : baseFallSpeed * positiveMultiplier * negativeMultipler;
-        Debug.Log("shapes cleared: " + numShapesCleared + " stack count: " + GetTotalStackCount() + ", speed: " + fallSpeed);
+        //Debug.Log("shapes cleared: " + numShapesCleared + " stack count: " + GetTotalStackCount() + ", speed: " + fallSpeed);
         return fallSpeed;
     }
 
@@ -110,7 +120,11 @@ public class GameController : MonoBehaviour
     {
         if (isSurging)
         {
-            spawnRate = 10f;
+            float oldSpawnRate = spawnRate;
+            spawnRate = 11f;
+            if (spawnRate < oldSpawnRate) {
+                spawnRate = oldSpawnRate * 1.5f;
+            }
         }
         else
         {
