@@ -25,20 +25,6 @@ public class FallingShape : MonoBehaviour
 
     }
 
-    void Update()
-    {
-        /**
-        fallSpeed = 10.0f * Mathf.Exp(0.01f * Time.timeSinceLevelLoad);
-
-        // Cap maximum speed at 40
-        if (fallSpeed > 40.0f)
-        {
-            fallSpeed = 40.0f;
-
-        }
-        */
-    }
-
     void OnTriggerEnter2D(Collider2D other)
     {
         fallSpeed = 0;
