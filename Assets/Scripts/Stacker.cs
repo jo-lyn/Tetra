@@ -65,7 +65,7 @@ public class Stacker : MonoBehaviour
             if (shape.CompareTag(tag))
             {
                 newShape = Instantiate(shape, transform.position, transform.rotation);
-                newShape.transform.Translate(Vector3.up * transform.localScale.y * stack.Count * colliderBoxScale);
+                newShape.transform.Translate(Vector3.up * transform.localScale.y * stack.Count);
                 newShape.transform.SetParent(gameObject.transform);
                 stack.Push(newShape);
 
@@ -92,7 +92,7 @@ public class Stacker : MonoBehaviour
 
     private void UpdateCollider()
     {
-        GetComponent<BoxCollider2D>().size = new Vector2(colliderBoxScale, stack.Count * colliderBoxScale);
+        GetComponent<BoxCollider2D>().size = new Vector2(1, stack.Count);
         GetComponent<BoxCollider2D>().offset = new Vector2(0, 0.5f * (stack.Count - 1));
     }
 }
