@@ -22,12 +22,15 @@ public class FallingShape : MonoBehaviour
         fallSpeed = GameController.instance.GetFallSpeed();
         Vector2 direction = transform.rotation * new Vector2(0, -1 * fallSpeed);
         rb2d.MovePosition(rb2d.position + direction * Time.fixedDeltaTime);
-
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         fallSpeed = 0;
         Destroy(gameObject);
+    }
+
+    IEnumerator Clear() {
+        yield return null;
     }
 }

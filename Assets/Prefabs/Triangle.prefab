@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114075594878444186}
   - component: {fileID: 50160369603084054}
   - component: {fileID: 61832995771107688}
+  - component: {fileID: 95989391516695262}
   m_Layer: 0
   m_Name: Triangle
   m_TagString: Triangle
@@ -88,6 +89,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &95989391516695262
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1597931320152386}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 821203bfa209cb540b413565e18eeafb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114075594878444186
 MonoBehaviour:
   m_ObjectHideFlags: 1
