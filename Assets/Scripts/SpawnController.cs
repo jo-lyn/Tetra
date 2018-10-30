@@ -45,9 +45,25 @@ public class SpawnController : MonoBehaviour
         while (true)
         {
             int spawnNum = Random.Range(0, 4);
+
+            /* flashing alert start */
             ShowAlert(spawnNum);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
             HideAlert(spawnNum);
+            yield return new WaitForSeconds(0.07f);
+            ShowAlert(spawnNum);
+            yield return new WaitForSeconds(0.07f);
+            HideAlert(spawnNum);
+            yield return new WaitForSeconds(0.07f);
+            ShowAlert(spawnNum);
+            yield return new WaitForSeconds(0.07f);
+            HideAlert(spawnNum);
+            yield return new WaitForSeconds(0.07f);
+            ShowAlert(spawnNum);
+            yield return new WaitForSeconds(0.07f);
+            HideAlert(spawnNum);
+            /* flashing alert end */
+            
             spawns[spawnNum].SpawnShape();
             yield return new WaitForSeconds(1f / GameController.instance.GetSpawnRate());
         }
