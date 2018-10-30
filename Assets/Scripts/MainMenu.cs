@@ -35,7 +35,13 @@ public class MainMenu : MonoBehaviour
         animator.SetTrigger("menuOut");
         Debug.Log("anim end");
         yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene("main");
+
+        AsyncOperation operation = SceneManager.LoadSceneAsync("main");
+        while (!operation.isDone) {
+			Debug.Log(operation.progress);
+
+			yield return null;
+		}
     }
 
 }
