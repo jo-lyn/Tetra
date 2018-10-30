@@ -75,14 +75,11 @@ public class Stacker : MonoBehaviour
 
     public void PopShape()
     {
-        //GameController.instance.AddNumShapesCleared();
-
         // do not pop if only root is left
         if (stack.Count > 1)
         {
             GameObject toPop = (GameObject)stack.Pop();
             toPop.GetComponent<ClearShape>().Clear();
-            //Destroy(toPop);
 
             topShape = ((GameObject)stack.Peek()).tag;
             UpdateCollider();
