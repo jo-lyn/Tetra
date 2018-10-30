@@ -20,6 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4127698277398734}
   - component: {fileID: 212064019772631578}
+  - component: {fileID: 95373934142199078}
+  - component: {fileID: 114968235952635936}
   m_Layer: 0
   m_Name: StackedCircle
   m_TagString: Circle
@@ -40,6 +42,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &95373934142199078
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1597931320152386}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 6285bca47e868294aa3dc1a1bae8fae0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114968235952635936
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1597931320152386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8660dfefe92d392438a93c9e56c3c00a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clearAnim: {fileID: 1256762335985642, guid: 3ac6fe5d82fcbbd45bf200d35ded6188, type: 2}
 --- !u!212 &212064019772631578
 SpriteRenderer:
   m_ObjectHideFlags: 1

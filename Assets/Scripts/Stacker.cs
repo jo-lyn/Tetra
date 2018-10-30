@@ -9,7 +9,6 @@ public class Stacker : MonoBehaviour
     public GameObject[] shapes;
     private Stack stack;
     private string topShape;
-    private float colliderBoxScale;
 
 
     private void Awake()
@@ -21,7 +20,6 @@ public class Stacker : MonoBehaviour
     {
         stack.Push(gameObject);
         topShape = gameObject.tag;
-        colliderBoxScale = GetComponent<BoxCollider2D>().size.x;
     }
 
     // Update is called once per frame
@@ -83,7 +81,8 @@ public class Stacker : MonoBehaviour
         if (stack.Count > 1)
         {
             GameObject toPop = (GameObject)stack.Pop();
-            Destroy(toPop);
+            toPop.GetComponent<ClearShape>().Clear();
+            //Destroy(toPop);
 
             topShape = ((GameObject)stack.Peek()).tag;
             UpdateCollider();
