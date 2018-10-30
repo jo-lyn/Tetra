@@ -29,6 +29,6 @@ public class Spawn : MonoBehaviour
     public void SpawnShape()
     {
         int randNum = Random.Range(0, 4);
-        Instantiate(shapes[0], transform.position, gameObject.transform.rotation);
+        Instantiate(shapes[randNum], transform.position, gameObject.transform.rotation);
     }
 }
