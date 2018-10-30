@@ -5,7 +5,7 @@ AnimatorOverrideController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: clear
+  m_Name: clearOverride
   m_Controller: {fileID: 9100000, guid: 424e782f8c71e9141b94d22be51243b0, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: 34725dec2e197bd4b964bdc25cec7da4, type: 2}
