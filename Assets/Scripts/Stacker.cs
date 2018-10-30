@@ -9,6 +9,7 @@ public class Stacker : MonoBehaviour
     public GameObject[] shapes;
     private Stack stack;
     private string topShape;
+    private float colliderBoxScale;
 
 
     private void Awake()
@@ -20,6 +21,7 @@ public class Stacker : MonoBehaviour
     {
         stack.Push(gameObject);
         topShape = gameObject.tag;
+        colliderBoxScale = GetComponent<BoxCollider2D>().size.x;
     }
 
     // Update is called once per frame
@@ -63,7 +65,7 @@ public class Stacker : MonoBehaviour
             if (shape.CompareTag(tag))
             {
                 newShape = Instantiate(shape, transform.position, transform.rotation);
-                newShape.transform.Translate(Vector3.up * transform.localScale.y * stack.Count);
+                newShape.transform.Translate(Vector3.up * transform.localScale.y * stack.Count * colliderBoxScale);
                 newShape.transform.SetParent(gameObject.transform);
                 stack.Push(newShape);
 
@@ -90,7 +92,7 @@ public class Stacker : MonoBehaviour
 
     private void UpdateCollider()
     {
-        GetComponent<BoxCollider2D>().size = new Vector2(1, stack.Count);
+        GetComponent<BoxCollider2D>().size = new Vector2(colliderBoxScale, stack.Count * colliderBoxScale);
         GetComponent<BoxCollider2D>().offset = new Vector2(0, 0.5f * (stack.Count - 1));
     }
 }
