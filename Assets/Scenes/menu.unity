@@ -140,7 +140,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da8d01c30e37a341bf745892e1356f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionAnim: {fileID: 295543350}
 --- !u!224 &136121883
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3349,7 +3348,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1988231411
 RectTransform:
   m_ObjectHideFlags: 0
