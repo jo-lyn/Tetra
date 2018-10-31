@@ -6,14 +6,15 @@ using UnityEngine.UI;
 public class Bar : MonoBehaviour
 {
     public Image bar;
+    public GameObject glowingAlert;
     private float incrementAmount = 0.1f;
-    private Color normalColor;
+    private bool isFull;
 
     // Use this for initialization
     void Start()
     {
         bar.fillAmount = 0f;
-        normalColor = bar.color;
+        glowingAlert.SetActive(false);
     }
 
     // Update is called once per frame
@@ -24,8 +25,11 @@ public class Bar : MonoBehaviour
             ResetFill();
         }
 
-        if (bar.fillAmount == 1) {
-            bar.color = new Color(0.65f, 0.13f, 0.08f);
+        if (bar.fillAmount == 1 && !isFull)
+        {
+            glowingAlert.SetActive(true);
+            isFull = true;
+            Debug.Log("full");
         }
     }
 
@@ -40,7 +44,13 @@ public class Bar : MonoBehaviour
     void ResetFill()
     {
         bar.fillAmount = 0;
-        bar.color = normalColor;
         GameController.instance.ClearTopLayer();
+        StartCoroutine(FadeOutAlert());
+        isFull = false;
+    }
+    IEnumerator FadeOutAlert() {
+        glowingAlert.GetComponent<Animator>().Play("glowFade");
+        yield return new WaitForSeconds(1f);
+        glowingAlert.SetActive(false);
     }
 }
