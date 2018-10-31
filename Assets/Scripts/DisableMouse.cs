@@ -9,6 +9,7 @@ public class DisableMouse : MonoBehaviour
 
     void Start()
     {
+        Cursor.visible = false;
         selectedObj = EventSystem.current.currentSelectedGameObject;
     }
 
