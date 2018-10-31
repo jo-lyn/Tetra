@@ -6,18 +6,18 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public EventSystem eventSystem;
-    public GameObject selectedObject;
-    public Animator animator;
+    public Animator menuAnim;
+    public Animator helpAnim;
+
+    void Start()
+    {
+    }
 
     void Update()
     {
-        if (Input.GetAxisRaw("Vertical") != 0)
-        {
-           // eventSystem.SetSelectedGameObject(selectedObject);
-        }
-        //Debug.Log(eventSystem.currentSelectedGameObject);
+
     }
+
     public void PlayGame()
     {
         Debug.Log("play");
@@ -32,16 +32,17 @@ public class MainMenu : MonoBehaviour
     IEnumerator LoadGame()
     {
         Debug.Log("setting trig");
-        animator.SetTrigger("menuOut");
+        menuAnim.SetTrigger("menuOut");
         Debug.Log("anim end");
         yield return new WaitForSeconds(1f);
 
         AsyncOperation operation = SceneManager.LoadSceneAsync("main");
-        while (!operation.isDone) {
-			Debug.Log(operation.progress);
+        while (!operation.isDone)
+        {
+            Debug.Log(operation.progress);
 
-			yield return null;
-		}
+            yield return null;
+        }
     }
 
 }
