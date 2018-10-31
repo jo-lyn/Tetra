@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneTransition : MonoBehaviour {
-	public Animator transitionAnim;
+public class MenuLoader : MonoBehaviour
+{
 
-	void Update () {
-		
-	}
+    public void LoadMenu()
+    {
+        SceneManager.LoadScene("menu");
+    }
 }
