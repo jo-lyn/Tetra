@@ -5,6 +5,10 @@ AnimatorOverrideController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: SelectButtonOverride
-  m_Controller: {fileID: 0}
-  m_Clips: []
+  m_Name: SelectButtonOverrider
+  m_Controller: {fileID: 9100000, guid: 9ec4e86515e393b40891de568d4f8d88, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 5e00bc41c653b6048853314c6522d1b9, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 5e00bc41c653b6048853314c6522d1b9, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 026a300bd60f93545bcb230be11c9bb1, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 026a300bd60f93545bcb230be11c9bb1, type: 2}
