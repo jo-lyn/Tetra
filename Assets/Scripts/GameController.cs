@@ -20,6 +20,10 @@ public class GameController : MonoBehaviour
     private float surgeDuration, surgeInterval;
     private float startTime, endTime;
 
+    public Text timeTakenText;
+    public Text fallSpeedText;
+    public Text shapesClearedText;
+
 
     void Awake()
     {
@@ -44,9 +48,13 @@ public class GameController : MonoBehaviour
         isSurging = false;
         surgeDuration = 6f;
         surgeInterval = 30f;
-        
+
         startTime = Time.time;
         isGameOver = false;
+
+        timeTakenText.text = "";
+        fallSpeedText.text = "";
+        shapesClearedText.text = "";
 
         InvokeRepeating("ActivateSurge", surgeInterval, surgeInterval);
         InvokeRepeating("DeactivateSurge", surgeInterval + surgeDuration, surgeInterval);
@@ -76,6 +84,11 @@ public class GameController : MonoBehaviour
         Debug.Log("Time taken: " + endTime);
         Debug.Log("Shapes cleared: " + numShapesCleared);
         Debug.Log("Fall speed: " + fallSpeed);
+
+
+        timeTakenText.text = "Time taken: " + endTime;
+        fallSpeedText.text = "Shapes cleared: " + numShapesCleared;
+        shapesClearedText.text = "Fall speed: " + fallSpeed;
     }
 
     void ActivateSurge()
