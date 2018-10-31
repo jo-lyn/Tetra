@@ -37,6 +37,9 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        if (GameController.instance.isGameOver) {
+            this.enabled = false;
+        }
     }
 
     IEnumerator Rotate(Vector3 axis, float angle)

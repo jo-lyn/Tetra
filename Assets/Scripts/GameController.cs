@@ -7,10 +7,12 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     public static GameController instance = null;
-    public CanvasGroup gameOver;
+    public GameObject gameOver;
     public Bar bar;
     public Stacker[] stacks;
     public GameObject spawnControllerObj;
+    public bool isGameOver;
+
     private int numShapesCleared, numShapesStacked;
     private float baseFallSpeed, fallSpeed;
     private float baseSpawnRate, spawnRate;
@@ -18,7 +20,6 @@ public class GameController : MonoBehaviour
     private float surgeDuration, surgeInterval;
     private float startTime, endTime;
 
-    private int i;
 
     void Awake()
     {
@@ -34,7 +35,7 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        gameOver.alpha = 0;
+        gameOver.SetActive(false);
         numShapesCleared = 0;
         baseFallSpeed = 9.3f;
         baseSpawnRate = 0.3f;
@@ -42,7 +43,7 @@ public class GameController : MonoBehaviour
         surgeDuration = 6f;
         surgeInterval = 30f;
         startTime = Time.time;
-        i = 0;
+        isGameOver = false;
 
         InvokeRepeating("ActivateSurge", surgeInterval, surgeInterval);
         InvokeRepeating("DeactivateSurge", surgeInterval + surgeDuration, surgeInterval);
@@ -51,33 +52,32 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(GetTotalStackCount());
-        foreach (Stacker stack in stacks)
+        if (!isGameOver)
         {
-            if (stack.GetStackCount() >= 8)
+            foreach (Stacker stack in stacks)
             {
-                GameOver();
+                if (stack.GetStackCount() >= 8)
+                {
+                    isGameOver = true;
+                    GameOver();
+                }
             }
         }
     }
 
     void GameOver()
     {
-        gameOver.alpha = 1;
+        gameOver.SetActive(true);
         Destroy(spawnControllerObj);
-        if (i == 0)
-        {
-            endTime = Time.time - startTime;
-            Debug.Log("Time taken: " + endTime);
-            Debug.Log("Shapes cleared: " + numShapesCleared);
-            Debug.Log("Fall speed: " + fallSpeed);
-        }
-        i++;
+        endTime = Time.time - startTime;
+        Debug.Log("Time taken: " + endTime);
+        Debug.Log("Shapes cleared: " + numShapesCleared);
+        Debug.Log("Fall speed: " + fallSpeed);
     }
 
     void ActivateSurge()
     {
-         isSurging = true;
+        isSurging = true;
     }
 
     void DeactivateSurge()
@@ -122,7 +122,8 @@ public class GameController : MonoBehaviour
         {
             float oldSpawnRate = spawnRate;
             spawnRate = 11f;
-            if (spawnRate < oldSpawnRate) {
+            if (spawnRate < oldSpawnRate)
+            {
                 spawnRate = oldSpawnRate * 1.5f;
             }
         }
@@ -141,6 +142,16 @@ public class GameController : MonoBehaviour
     public void Replay()
     {
         SceneManager.LoadScene("main");
+    }
+
+    public void LoadMenu()
+    {
+        SceneManager.LoadScene("menu");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 
     public void AddNumShapesCleared()
