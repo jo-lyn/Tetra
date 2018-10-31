@@ -35,13 +35,16 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
+        Cursor.visible = false;
         gameOver.SetActive(false);
+
         numShapesCleared = 0;
         baseFallSpeed = 9.3f;
         baseSpawnRate = 0.3f;
         isSurging = false;
         surgeDuration = 6f;
         surgeInterval = 30f;
+        
         startTime = Time.time;
         isGameOver = false;
 
