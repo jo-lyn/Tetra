@@ -6,8 +6,13 @@ using UnityEngine.SceneManagement;
 public class MenuLoader : MonoBehaviour
 {
 
-    public void LoadMenu()
+    void Start()
     {
+        StartCoroutine(LoadMenu());
+    }
+    IEnumerator LoadMenu()
+    {
+        yield return new WaitForSeconds(2.3f);
         SceneManager.LoadScene("menu");
     }
 }
