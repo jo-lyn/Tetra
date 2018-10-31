@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Instruction : MonoBehaviour
 {
+    public GameObject helpButton;
     private bool isShown;
 
     // Use this for initialization
@@ -18,6 +19,8 @@ public class Instruction : MonoBehaviour
         if (Input.GetKeyDown("space") && isShown)
         {
             GetComponent<Animator>().Play("popOut");
+            helpButton.SetActive(true);
+            isShown = false;
         }
     }
 
@@ -29,6 +32,7 @@ public class Instruction : MonoBehaviour
     IEnumerator PopIn()
     {
         GetComponent<Animator>().Play("popIn");
+        helpButton.SetActive(false);
         yield return new WaitForSeconds(1f); // prevent popOut from playing
         isShown = true;
     }
