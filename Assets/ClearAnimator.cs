@@ -6,13 +6,11 @@ public class ClearAnimator : MonoBehaviour
 {
     public Animator anim;
     private GameObject shape;
-    //private float angle;
 
     // Use this for initialization
     void Start()
     {
         shape = gameObject.transform.GetChild(0).gameObject;
-        //angle = shape.transform.rotation.z;
     }
 
     // Update is called once per frame
