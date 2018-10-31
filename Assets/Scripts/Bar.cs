@@ -25,7 +25,7 @@ public class Bar : MonoBehaviour
         }
 
         if (bar.fillAmount == 1) {
-            bar.color = new Color(0.5f, 0.7f, 0.9f);
+            bar.color = new Color(0.65f, 0.13f, 0.08f);
         }
     }
 
