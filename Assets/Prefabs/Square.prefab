@@ -118,7 +118,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 445578a919afb764183ecde16c6957da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stacker: {fileID: 114227457120251136, guid: b3e677f03114da4469217d0c6d5bbe3c, type: 2}
   fallSpeed: 10
 --- !u!212 &212064019772631578
 SpriteRenderer:
@@ -155,8 +154,8 @@ SpriteRenderer:
   m_SortingLayerID: -1708449331
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 98c97713bc58246d382975939d863c4b, type: 3}
-  m_Color: {r: 0.21568629, g: 0.20000002, b: 0.19215688, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 7a47961042b73424da2c394c4d59b9f6, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
