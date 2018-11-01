@@ -38,18 +38,13 @@ public class FallingShape : MonoBehaviour
             isHit = true;
             StartCoroutine(Bloat());
         }
-        // do not go through
         else if ((other.GetComponent<Stacker>().GetStackCount() == 1
             && !other.CompareTag(gameObject.tag))
             || other.GetComponent<Stacker>().GetStackCount() != 1)
         {
+            // do not pass through shape
             isHit = true;
             Destroy(gameObject);
-        }
-        else
-        {
-            //isHit = true;
-            //Destroy(gameObject);
         }
     }
 

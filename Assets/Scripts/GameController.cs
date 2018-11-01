@@ -73,28 +73,11 @@ public class GameController : MonoBehaviour
                 {
                     isGameOver = true;
                     StartCoroutine(GameOver());
-                    //GameOver();
                 }
             }
         }
     }
 
-    /** 
-        void GameOver()
-        {
-            gameOver.SetActive(true);
-            Destroy(spawnControllerObj);
-            endTime = Time.time - startTime;
-            Debug.Log("Time taken: " + endTime);
-            Debug.Log("Shapes cleared: " + numShapesCleared);
-            Debug.Log("Fall speed: " + fallSpeed);
-
-
-            timeTakenText.text = "Time taken: " + endTime;
-            fallSpeedText.text = "Shapes cleared: " + numShapesCleared;
-            shapesClearedText.text = "Fall speed: " + fallSpeed;
-        }
-*/
     void ActivateSurge()
     {
         StartCoroutine("StartSurgeCoroutine");
@@ -197,7 +180,6 @@ public class GameController : MonoBehaviour
 
     IEnumerator GameOver()
     {
-        int i;
         Destroy(spawnControllerObj);
         Debug.Log("Time taken: " + endTime);
         Debug.Log("Shapes cleared: " + numShapesCleared);
@@ -208,7 +190,7 @@ public class GameController : MonoBehaviour
         fallSpeedText.text = "Shapes cleared: " + numShapesCleared;
         shapesClearedText.text = "Fall speed: " + fallSpeed;
 
-        for (i = 0; i < 7; i++)
+        for (int i = 0; i < 7; i++)
         {
             ClearTopLayer();
             yield return new WaitForSeconds(0.1f);
