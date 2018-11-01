@@ -1,30 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class Instruction : MonoBehaviour
+public class PopUpWindow : MonoBehaviour
 {
-    public GameObject helpButton;
+    public GameObject button;
     private bool isShown;
 
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown("space") && isShown)
         {
+            Debug.Log("kikik");
             GetComponent<Animator>().Play("popOut");
-            helpButton.SetActive(true);
+            button.SetActive(true);
             isShown = false;
         }
     }
 
-    public void ShowHelp()
+    public void ShowWindow()
     {
         StartCoroutine("PopIn");
     }
@@ -32,7 +27,7 @@ public class Instruction : MonoBehaviour
     IEnumerator PopIn()
     {
         GetComponent<Animator>().Play("popIn");
-        helpButton.SetActive(false);
+        button.SetActive(false);
         yield return new WaitForSeconds(1f); // prevent popOut from playing
         isShown = true;
     }
