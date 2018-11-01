@@ -11,6 +11,8 @@ public class GameController : MonoBehaviour
     public Bar bar;
     public Stacker[] stacks;
     public GameObject spawnControllerObj;
+
+    public Animator surgeAnim;
     public bool isGameOver;
 
     private int numShapesCleared, numShapesStacked;
@@ -95,12 +97,27 @@ public class GameController : MonoBehaviour
 */
     void ActivateSurge()
     {
-        isSurging = true;
+        StartCoroutine("StartSurgeCoroutine");
     }
 
     void DeactivateSurge()
     {
+        StartCoroutine("EndSurgeCoroutine");
+    }
+
+    IEnumerator StartSurgeCoroutine()
+    {
+        surgeAnim.Play("surgeIn");
+        isSurging = true;
+        yield return null;
+    }
+
+    IEnumerator EndSurgeCoroutine()
+    {
         isSurging = false;
+        yield return new WaitForSeconds(1f);
+        surgeAnim.Play("surgeOut");
+        //yield return null;
     }
 
     int GetTotalStackCount()
@@ -186,6 +203,7 @@ public class GameController : MonoBehaviour
         Debug.Log("Shapes cleared: " + numShapesCleared);
         Debug.Log("Fall speed: " + fallSpeed);
 
+        endTime = Time.time - startTime;
         timeTakenText.text = "Time taken: " + endTime;
         fallSpeedText.text = "Shapes cleared: " + numShapesCleared;
         shapesClearedText.text = "Fall speed: " + fallSpeed;
@@ -199,6 +217,5 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         gameOver.SetActive(true);
-        endTime = Time.time - startTime;
     }
 }
