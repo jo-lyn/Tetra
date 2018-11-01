@@ -70,27 +70,29 @@ public class GameController : MonoBehaviour
                 if (stack.GetStackCount() >= 8)
                 {
                     isGameOver = true;
-                    GameOver();
+                    StartCoroutine(GameOver());
+                    //GameOver();
                 }
             }
         }
     }
 
-    void GameOver()
-    {
-        gameOver.SetActive(true);
-        Destroy(spawnControllerObj);
-        endTime = Time.time - startTime;
-        Debug.Log("Time taken: " + endTime);
-        Debug.Log("Shapes cleared: " + numShapesCleared);
-        Debug.Log("Fall speed: " + fallSpeed);
+    /** 
+        void GameOver()
+        {
+            gameOver.SetActive(true);
+            Destroy(spawnControllerObj);
+            endTime = Time.time - startTime;
+            Debug.Log("Time taken: " + endTime);
+            Debug.Log("Shapes cleared: " + numShapesCleared);
+            Debug.Log("Fall speed: " + fallSpeed);
 
 
-        timeTakenText.text = "Time taken: " + endTime;
-        fallSpeedText.text = "Shapes cleared: " + numShapesCleared;
-        shapesClearedText.text = "Fall speed: " + fallSpeed;
-    }
-
+            timeTakenText.text = "Time taken: " + endTime;
+            fallSpeedText.text = "Shapes cleared: " + numShapesCleared;
+            shapesClearedText.text = "Fall speed: " + fallSpeed;
+        }
+*/
     void ActivateSurge()
     {
         isSurging = true;
@@ -174,5 +176,29 @@ public class GameController : MonoBehaviour
     {
         numShapesCleared++;
         bar.UpdateFill(numShapesCleared);
+    }
+
+    IEnumerator GameOver()
+    {
+        int i;
+        Destroy(spawnControllerObj);
+        Debug.Log("Time taken: " + endTime);
+        Debug.Log("Shapes cleared: " + numShapesCleared);
+        Debug.Log("Fall speed: " + fallSpeed);
+
+        timeTakenText.text = "Time taken: " + endTime;
+        fallSpeedText.text = "Shapes cleared: " + numShapesCleared;
+        shapesClearedText.text = "Fall speed: " + fallSpeed;
+
+        for (i = 0; i < 7; i++)
+        {
+            ClearTopLayer();
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        yield return new WaitForSeconds(1f);
+
+        gameOver.SetActive(true);
+        endTime = Time.time - startTime;
     }
 }

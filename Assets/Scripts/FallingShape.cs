@@ -35,7 +35,6 @@ public class FallingShape : MonoBehaviour
         if (other.GetComponent<Stacker>().GetStackCount() == 1
             && other.CompareTag(gameObject.tag))
         {
-            Debug.Log("hit root");
             StartCoroutine(Bloat());
         }
         else
