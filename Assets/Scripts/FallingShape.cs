@@ -22,7 +22,9 @@ public class FallingShape : MonoBehaviour
         if (!isHit)
         {
             fallSpeed = GameController.instance.GetFallSpeed();
-        } else {
+        }
+        else
+        {
             fallSpeed = 0;
         }
         Vector2 direction = transform.rotation * new Vector2(0, -1 * fallSpeed);
@@ -31,15 +33,23 @@ public class FallingShape : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        isHit = true;
-        if (other.GetComponent<Stacker>().GetStackCount() == 1
-            && other.CompareTag(gameObject.tag))
+        if (other.CompareTag("Root"))
         {
+            isHit = true;
             StartCoroutine(Bloat());
+        }
+        // do not go through
+        else if ((other.GetComponent<Stacker>().GetStackCount() == 1
+            && !other.CompareTag(gameObject.tag))
+            || other.GetComponent<Stacker>().GetStackCount() != 1)
+        {
+            isHit = true;
+            Destroy(gameObject);
         }
         else
         {
-            Destroy(gameObject);
+            //isHit = true;
+            //Destroy(gameObject);
         }
     }
 
