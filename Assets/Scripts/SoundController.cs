@@ -1,5 +1,6 @@
 ﻿using UnityEngine.Audio;
 using UnityEngine;
+using System;
 
 public class SoundController : MonoBehaviour
 {
@@ -9,7 +10,6 @@ public class SoundController : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
-
         if (instance == null)
         {
             instance = this;
@@ -19,11 +19,32 @@ public class SoundController : MonoBehaviour
             Destroy(gameObject);
         }
         DontDestroyOnLoad(gameObject);
+
+        InstantiateSounds();
+        PlayBgMusic();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Play(string name)
     {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        s.source.Play();
+    }
 
+    private void InstantiateSounds()
+    {
+        foreach (Sound s in sounds)
+        {
+            s.source = gameObject.AddComponent<AudioSource>();
+            s.source.clip = s.clip;
+            s.source.volume = s.volume;
+            s.source.loop = s.loop;
+            s.source.playOnAwake = s.playOnAwake;
+        }
+    }
+
+    private void PlayBgMusic()
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == "bg");
+        s.source.Play();
     }
 }
