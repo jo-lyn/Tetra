@@ -21,16 +21,17 @@ public class ClearAnimator : MonoBehaviour
             anim.Play("clearRight");
         }
         // shape follows transparency of animator
-        shape.GetComponent<SpriteRenderer>().color = gameObject.GetComponent<SpriteRenderer>().color;
+        shape.GetComponent<SpriteRenderer>().color = GetComponent<SpriteRenderer>().color;
     }
 
     public void PlayClearAnimation(float angle)
     {
-        StartCoroutine(Animate(angle));
+        StartCoroutine(ClearCoroutine(angle));
     }
 
-    IEnumerator Animate(float angle)
+    IEnumerator ClearCoroutine(float angle)
     {
+        GetComponent<AudioSource>().Play();
         if (angle > 0)
         {
             anim.Play("clearLeft");
