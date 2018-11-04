@@ -43,12 +43,15 @@ public class Bar : MonoBehaviour
 
     void ResetFill()
     {
+        SoundController.instance.Play("activate");
         bar.fillAmount = 0;
         GameController.instance.ClearTopLayer();
         StartCoroutine(FadeOutAlert());
         isFull = false;
     }
-    IEnumerator FadeOutAlert() {
+
+    IEnumerator FadeOutAlert()
+    {
         glowingAlert.GetComponent<Animator>().Play("glowFade");
         yield return new WaitForSeconds(1f);
         glowingAlert.SetActive(false);
