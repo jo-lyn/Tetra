@@ -50,6 +50,7 @@ public class FallingShape : MonoBehaviour
 
     IEnumerator Bloat()
     {
+        SoundController.instance.Play("hit");
         gameObject.GetComponent<Animator>().Play("bloat");
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
