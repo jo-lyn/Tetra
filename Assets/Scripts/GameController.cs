@@ -90,6 +90,7 @@ public class GameController : MonoBehaviour
 
     IEnumerator StartSurgeCoroutine()
     {
+        SoundController.instance.Play("surge");
         surgeAnim.Play("surgeIn");
         isSurging = true;
         yield return null;
@@ -100,7 +101,6 @@ public class GameController : MonoBehaviour
         isSurging = false;
         yield return new WaitForSeconds(1f);
         surgeAnim.Play("surgeOut");
-        //yield return null;
     }
 
     int GetTotalStackCount()
