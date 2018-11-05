@@ -80,7 +80,10 @@ public class GameController : MonoBehaviour
 
     void ActivateSurge()
     {
-        StartCoroutine("StartSurgeCoroutine");
+        if (!isGameOver)
+        {
+            StartCoroutine("StartSurgeCoroutine");
+        }
     }
 
     void DeactivateSurge()

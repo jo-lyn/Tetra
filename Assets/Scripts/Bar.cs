@@ -20,16 +20,19 @@ public class Bar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("space") && bar.fillAmount == 1)
+        if (!GameController.instance.isGameOver)
         {
-            ResetFill();
-        }
+            if (Input.GetKeyDown("space") && bar.fillAmount == 1)
+            {
+                ResetFill();
+            }
 
-        if (bar.fillAmount == 1 && !isFull)
-        {
-            glowingAlert.SetActive(true);
-            isFull = true;
-            Debug.Log("full");
+            if (bar.fillAmount == 1 && !isFull)
+            {
+                glowingAlert.SetActive(true);
+                isFull = true;
+                Debug.Log("full");
+            }
         }
     }
 
