@@ -8,12 +8,12 @@ public class GameController : MonoBehaviour
 {
     public static GameController instance = null;
     public GameObject gameOver;
+    public bool isGameOver;
     public Bar bar;
     public Stacker[] stacks;
     public GameObject spawnControllerObj;
 
     public Animator surgeAnim;
-    public bool isGameOver;
 
     private int numShapesCleared, numShapesStacked;
     private float baseFallSpeed, fallSpeed;
@@ -22,9 +22,9 @@ public class GameController : MonoBehaviour
     private float surgeDuration, surgeInterval;
     private float startTime, endTime;
 
-    public Text timeTakenText;
-    public Text fallSpeedText;
-    public Text shapesClearedText;
+    //public Text timeTakenText;
+    //public Text fallSpeedText;
+    //public Text shapesClearedText;
 
 
     void Awake()
@@ -54,9 +54,9 @@ public class GameController : MonoBehaviour
         startTime = Time.time;
         isGameOver = false;
 
-        timeTakenText.text = "";
-        fallSpeedText.text = "";
-        shapesClearedText.text = "";
+        //timeTakenText.text = "";
+        //fallSpeedText.text = "";
+        //shapesClearedText.text = "";
 
         InvokeRepeating("ActivateSurge", surgeInterval, surgeInterval);
         InvokeRepeating("DeactivateSurge", surgeInterval + surgeDuration, surgeInterval);
@@ -184,14 +184,14 @@ public class GameController : MonoBehaviour
     IEnumerator GameOver()
     {
         Destroy(spawnControllerObj);
-        Debug.Log("Time taken: " + endTime);
-        Debug.Log("Shapes cleared: " + numShapesCleared);
-        Debug.Log("Fall speed: " + fallSpeed);
+        //Debug.Log("Time taken: " + endTime);
+        //Debug.Log("Shapes cleared: " + numShapesCleared);
+        //Debug.Log("Fall speed: " + fallSpeed);
 
         endTime = Time.time - startTime;
-        timeTakenText.text = "Time taken: " + endTime;
-        fallSpeedText.text = "Shapes cleared: " + numShapesCleared;
-        shapesClearedText.text = "Fall speed: " + fallSpeed;
+        //timeTakenText.text = "Time taken: " + endTime;
+        //fallSpeedText.text = "Shapes cleared: " + numShapesCleared;
+        //shapesClearedText.text = "Fall speed: " + fallSpeed;
 
         for (int i = 0; i < 7; i++)
         {

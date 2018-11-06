@@ -12,7 +12,10 @@ public class MenuLoader : MonoBehaviour
     }
     IEnumerator LoadMenu()
     {
+        AsyncOperation op = SceneManager.LoadSceneAsync ( "menu" );
+        op.allowSceneActivation = false;
         yield return new WaitForSeconds(2.3f);
-        SceneManager.LoadScene("menu");
+        op.allowSceneActivation = true;
+        //SceneManager.LoadScene("menu");
     }
 }
