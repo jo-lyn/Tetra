@@ -35,7 +35,7 @@ public class FallingShape : MonoBehaviour
     {
         if (other.CompareTag("Root"))
         {
-            isHit = true;
+            //isHit = true;
             StartCoroutine(Bloat());
         }
         else if ((other.GetComponent<Stacker>().GetStackCount() == 1
@@ -52,6 +52,7 @@ public class FallingShape : MonoBehaviour
     {
         SoundController.instance.Play("hit");
         gameObject.GetComponent<Animator>().Play("bloat");
+        isHit = true;
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
         yield return null;
