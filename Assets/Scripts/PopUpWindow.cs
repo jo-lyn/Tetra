@@ -12,7 +12,6 @@ public class PopUpWindow : MonoBehaviour
     {
         if (Input.GetKeyDown("space") && isShown)
         {
-            Debug.Log("kikik");
             GetComponent<Animator>().Play("popOut");
             button.SetActive(true);
             isShown = false;
