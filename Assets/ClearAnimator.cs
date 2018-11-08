@@ -31,7 +31,11 @@ public class ClearAnimator : MonoBehaviour
 
     IEnumerator ClearCoroutine(float angle)
     {
-        SoundController.instance.Play("hit");
+        if (SoundController.instance != null)
+        {
+
+            SoundController.instance.Play("hit");
+        }
         if (angle > 0)
         {
             anim.Play("clearLeft");
