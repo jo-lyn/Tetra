@@ -20,13 +20,14 @@ public class GameController : MonoBehaviour
     private float baseSpawnRate, spawnRate;
     private bool isSurging;
     private float surgeDuration, surgeInterval;
-    private float startTime, endTime;
 
+    /* STATS
+    private float startTime, endTime;
     public Text timeTakenText;
     public Text fallSpeedText;
     public Text shapesClearedText;
     public GameObject stats;
-
+    */
 
     void Awake()
     {
@@ -52,10 +53,11 @@ public class GameController : MonoBehaviour
         surgeDuration = 6f;
         surgeInterval = 30f;
 
-        startTime = Time.time;
         isGameOver = false;
+        /* STATS
+        startTime = Time.time;
         stats.GetComponent<Canvas>().enabled = false;
-
+        */
 
         InvokeRepeating("ActivateSurge", surgeInterval, surgeInterval);
         InvokeRepeating("DeactivateSurge", surgeInterval + surgeDuration, surgeInterval);
@@ -75,11 +77,11 @@ public class GameController : MonoBehaviour
                 }
             }
         }
-
+        /* STATS
         if (isGameOver && Input.GetKeyDown("i"))
         {
             stats.GetComponent<Canvas>().enabled = !stats.GetComponent<Canvas>().enabled;
-        }
+        }*/
     }
 
     void ActivateSurge()
@@ -137,7 +139,6 @@ public class GameController : MonoBehaviour
         fallSpeed = numShapesCleared == 0
                     ? baseFallSpeed
                     : baseFallSpeed * positiveMultiplier * negativeMultipler;
-        //Debug.Log("shapes cleared: " + numShapesCleared + " stack count: " + GetTotalStackCount() + ", speed: " + fallSpeed);
         return fallSpeed;
     }
 
@@ -160,7 +161,6 @@ public class GameController : MonoBehaviour
                         ? baseSpawnRate
                         : baseSpawnRate * speedBoost * negativeMultiplier;
         }
-
         return spawnRate;
     }
 
@@ -189,6 +189,7 @@ public class GameController : MonoBehaviour
     {
         Destroy(spawnControllerObj);
 
+        /* STATS
         endTime = Time.time - startTime;
         Debug.Log(endTime);
         Debug.Log(numShapesCleared);
@@ -197,6 +198,7 @@ public class GameController : MonoBehaviour
         timeTakenText.text = "Time taken: " + endTime.ToString();
         fallSpeedText.text = "Shapes cleared: " + numShapesCleared.ToString();
         shapesClearedText.text = "Fall speed: " + fallSpeed.ToString();
+        */
 
         for (int i = 0; i < 7; i++)
         {
@@ -205,7 +207,6 @@ public class GameController : MonoBehaviour
         }
 
         yield return new WaitForSeconds(1f);
-
         gameOver.SetActive(true);
     }
 }

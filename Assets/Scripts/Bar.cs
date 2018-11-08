@@ -31,7 +31,6 @@ public class Bar : MonoBehaviour
             {
                 glowingAlert.SetActive(true);
                 isFull = true;
-                Debug.Log("full");
             }
         }
     }
