@@ -25,6 +25,7 @@ public class Stacker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if (Input.GetKeyDown("o"))
         {
             StackShape("Triangle");
@@ -34,6 +35,7 @@ public class Stacker : MonoBehaviour
             PopShape();
             GameController.instance.AddNumShapesCleared();
         }
+        */
     }
 
     void OnTriggerEnter2D(Collider2D other)
